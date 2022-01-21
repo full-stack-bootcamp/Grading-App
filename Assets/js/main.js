@@ -1,3 +1,9 @@
+function getStudents(){
+    const studentsAsString = localStorage.getItem('students');
+    const students = JSON.parse(studentsAsString);
+    
+    return students;
+}
 const content = {
     data(){
         return{
@@ -7,7 +13,7 @@ const content = {
 
             isAdding : false,
 
-            students : [],
+            students : getStudents(),
         };
     },
 
@@ -22,6 +28,12 @@ const content = {
             this.name = '';
             this.grade = '';
             this.isAdding = false;
+            
+            const studentsAsString = JSON.stringify(this.students);
+            localStorage.setItem('students', studentsAsString)
+
+            const array = localStorage.setItem('students');
+            JSON.parse(array);
         }
     }
 }

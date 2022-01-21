@@ -38,11 +38,17 @@
                         <tr>
                             <td class="border border-gray-200 p-2"> {{student.id}} </td>
                             <td class="border border-gray-200 p-2">{{student.name}}</td>
-                            <td class="border border-gray-200 p-2">{{student.grade}}</td>
+                            <td class="border border-gray-200 p-2">
+                                <span v-if="student.grade > 50">{{student.grade}}</span>
+                                <span v-else class="text-red-600">{{student.grade}}</span>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
+
+
+
 
             <div v-else class="mt-8">
                 <div class="flex space-x-3">
