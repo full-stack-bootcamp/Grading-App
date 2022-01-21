@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grading System</title>
+    <link rel="shortcut icon" href="./Assets/img/vue-js.png" type="image/x-icon">
+    <link rel="stylesheet" href="./Assets/css/tailwind.min.css">
+    <link rel="stylesheet" href="./Assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="./Assets/css/all.css">
+</head>
+
+<body class="bg-gray-200">
+    <div class="app">
+        <div class="w-2/3 mx-auto bg-white shadow-lg rounded-lg mt-4 p-4">
+            <h3 class="text-3xl text-center">Grading System</h3>
+
+            <div class="mt-8 flex space-x-2">
+                <input type="text" class="outline-none text-lg px-4 py-2 ring-1 focus:ring rounded" placeholder="Search">
+
+                <button @click="isAdding=true"
+                    class="bg-blue-700 text-white px-4 py-3 rounded shadow text-xl hover:bg-blue-500 hover:text-white transition"><i
+                        class="fas fa-plus"></i></button>
+            </div>
+
+            <div class="mt-8" v-if="!isAdding">
+                <table class="table w-full border">
+                    <thead>
+                        <tr class="uppercase">
+                            <th class="border border-gray-200 p-2">Id</th>
+                            <th class="border border-gray-200 p-2">Name</th>
+                            <th class="border border-gray-200 p-2">Grade</th>
+                        </tr>
+                    </thead>
+                    <tbody v-for="student in students" class="text-center border">
+                        <tr>
+                            <td class="border border-gray-200 p-2"> {{student.id}} </td>
+                            <td class="border border-gray-200 p-2">{{student.name}}</td>
+                            <td class="border border-gray-200 p-2">{{student.grade}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div v-else class="mt-8">
+                <div class="flex space-x-3">
+                    <input type="number" v-model="id" class="outline-none rounded text-lg px-4 py-2 ring-1 focus:ring" placeholder="Student Id">
+                    <input type="text" v-model="name" class="outline-none rounded text-lg px-4 py-2 ring-1 focus:ring" placeholder="Student Name">
+                    <input type="number" v-model="grade" class="outline-none rounded text-lg px-4 py-2 ring-1 focus:ring" placeholder="Student Grade">
+                    <button type="submit" @click="saveData"
+                    class="bg-green-700 text-white px-4 py-3 rounded shadow text-xl hover:bg-green-500 hover:text-white transition">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./Assets/js/vue.js"></script>
+    <script src="./Assets/js/main.js"></script>
+    <script src="./Assets/js/all.js"></script>
+</body>
+
+</html>
